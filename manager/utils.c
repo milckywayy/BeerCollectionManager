@@ -2,7 +2,7 @@
 
 
 int get_str_len(char *str) {
-	int len;
+	int len = 0;
 
 	while(*(str++) != '\0') {
 		len++;

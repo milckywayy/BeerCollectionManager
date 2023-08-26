@@ -4,6 +4,9 @@
 test: ../build/main.exe
 	./../build/main.exe
 
+testmem: ../build/main.exe
+	valgrind ./../build/main.exe
+
 windows:
 	# TODO
 

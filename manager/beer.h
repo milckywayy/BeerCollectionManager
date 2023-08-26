@@ -3,15 +3,15 @@
 
 
 typedef struct {
-	char name[100];
+	char *name;
 	double price;
 	double alcohol_perc;
-	double volume;
+	double volume_ml;
 } beer_t;
 
 
-beer_t *init_beer(char *name, double price, double alcohol_perc, double volume);
-void free_beer(beer_t *beer);
+beer_t *init_beer(char *, double, double, double);
+void free_beer(beer_t *);
 
 
 #endif

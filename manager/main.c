@@ -3,10 +3,13 @@
 
 
 int main(int argc, char **argv) {
-
-	char *name = "LALA";
-	beer_t *beer = init_beer(name, 5.0, 5.0, 500.0); 
-	printf("%f\n", beer->price);
+	beer_t *beer = NULL;
+	char name[50] = "Harnaś";
+	
+	beer = init_beer(name, 5.0, 5.0, 500.0); 
+	
+	printf("%s\n", beer->name);
+	
 	free_beer(beer);
 
 	return 0;
