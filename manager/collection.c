@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "collection.h"
 #include "beer.h"
+#include "utils.h"
 
 
 collection_t *init_collection(int capacity) {
@@ -50,15 +51,50 @@ int add_beer_to_collection(collection_t *coll, beer_t *beer) {
 	return 0;
 }
 
+int set_collection_beer_count(collection_t *coll, char *beer_name, int count) {
+	beer_t *beer;
+	
+	for (int i = 0; i < coll->n; i++) {
+		beer = coll->beers[i];
+		if (str_equals(beer->name, beer_name) == 0) {
+			coll->amount[i] = count;
+			return 0;
+		}
+	}
 
-int set_collcection_beer_count(collection_t *, int count);
+	return 1;
+}
+
+int read_collection_from_file(collection_t *coll, char *file_name) {
+	
+}
+
+int write_collection_to_file(collection_t *coll, char *file_name) {
+	int i;
+	beer_t *beer;
+	FILE *file;
+		
+	file = fopen(file_name, "w");
+	if (file == NULL) {
+		return 1;
+	}
+
+	for (i = 0; i < coll->n; i++) {
+		beer = coll->beers[i];
+		fprintf(file, "%s %f %f %d %d\n", beer->name, beer->price, beer->alcohol_perc, beer->volume_ml, coll->amount[i]);
+	}
+
+	fclose(file);
+
+	return 0;
+}
 
 void print_collection(collection_t *coll) {
 	int i;
 	
 	for (i = 0; i < coll->n; i++) {
 		print_beer(coll->beers[i]);
-		// printf("count: %d\n\n", coll->amount[i]);
+		printf("count: %d\n\n", coll->amount[i]);
 	}
 }
 

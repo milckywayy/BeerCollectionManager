@@ -3,6 +3,7 @@
 
 
 int get_str_len(char *);
+int str_equals(char *, char *);
 
 
 #endif
