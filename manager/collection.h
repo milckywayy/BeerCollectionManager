@@ -19,6 +19,7 @@ int add_beer_to_collection(collection_t *, beer_t *);
 int set_collection_beer_count(collection_t *, char*, int);
 int read_collection_from_file(collection_t *, char *);
 int write_collection_to_file(collection_t *, char *);
+void sort_collection(collection_t *, cmp_beer_func_t);
 void print_collection(collection_t *);
 void free_collection(collection_t *);
 

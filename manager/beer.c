@@ -40,7 +40,7 @@ void free_beer(beer_t *beer) {
 int cmp_beer_name_asc(const void *a, const void *b) {
     	beer_t *beer_a = *(beer_t **)a;
     	beer_t *beer_b = *(beer_t **)b;
- 
+
 	return cmp_str(beer_a->name, beer_b->name);
 }
 
@@ -80,10 +80,7 @@ int cmp_beer_volume_asc(const void *a, const void *b) {
 	beer_t *beer_a = *(beer_t **)a;
     	beer_t *beer_b = *(beer_t **)b;
     	
-	if (beer_a->volume_ml < beer_b->volume_ml) return -1;
-    	if (beer_a->volume_ml > beer_b->volume_ml) return 1;
-    	
-	return 0;
+	return beer_a->volume_ml - beer_b->volume_ml;
 }
 
 int cmp_beer_volume_desc(const void *a, const void *b) {

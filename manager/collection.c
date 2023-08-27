@@ -118,6 +118,19 @@ int write_collection_to_file(collection_t *coll, char *file_name) {
 	return 0;
 }
 
+void sort_collection(collection_t *coll, cmp_beer_func_t cmp_func) {
+	int i, j;
+
+	for (i = 0; i < coll->n - 1; i++) {
+		for (j = 0; j < coll->n - i - 1; j++) {
+			if (cmp_func(&(coll->beers[j]), &(coll->beers[j + 1])) > 0) {
+				swap_beer(&(coll->beers[j]), &(coll->beers[j + 1]));
+				swap_int(&(coll->amount[j]), &(coll->amount[j + 1]));
+			}
+		}
+	}
+}
+
 void print_collection(collection_t *coll) {
 	int i;
 	
