@@ -4,7 +4,7 @@
 #include "utils.h"
 
 
-beer_t *init_beer(char *name, double price, double alcohol_perc, double volume_ml) {
+beer_t *init_beer(char *name, double price, double alcohol_perc, int volume_ml) {
 	int i = 0;
 	int name_len = 0;
 	beer_t *beer = malloc(sizeof(beer_t));
@@ -28,6 +28,9 @@ beer_t *init_beer(char *name, double price, double alcohol_perc, double volume_m
 	return beer;
 }
 
+void print_beer(beer_t *beer) {
+	printf("%s: price: %f, alc: %f, ml: %d\n", beer->name, beer->price, beer->alcohol_perc, beer->volume_ml);
+}
 
 void free_beer(beer_t *beer) {
 	free(beer->name);

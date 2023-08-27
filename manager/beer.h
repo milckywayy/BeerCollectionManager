@@ -6,11 +6,12 @@ typedef struct {
 	char *name;
 	double price;
 	double alcohol_perc;
-	double volume_ml;
+	int volume_ml;
 } beer_t;
 
 
-beer_t *init_beer(char *, double, double, double);
+beer_t *init_beer(char *, double, double, int);
+void print_beer(beer_t *);
 void free_beer(beer_t *);
 
 
