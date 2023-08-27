@@ -14,5 +14,14 @@ beer_t *init_beer(char *, double, double, int);
 void print_beer(beer_t *);
 void free_beer(beer_t *);
 
+int cmp_beer_name_asc(const void *a, const void *b);
+int cmp_beer_name_desc(const void *a, const void *b);
+int cmp_beer_alc_asc(const void *a, const void *b);
+int cmp_beer_alc_desc(const void *a, const void *b);
+int cmp_beer_price_asc(const void *a, const void *b);
+int cmp_beer_price_desc(const void *a, const void *b);
+int cmp_beer_volume_asc(const void *a, const void *b);
+int cmp_beer_volume_desc(const void *a, const void *b);
+
 
 #endif

@@ -55,6 +55,10 @@ int add_beer_to_collection(collection_t *coll, beer_t *beer) {
 int set_collection_beer_count(collection_t *coll, char *beer_name, int count) {
 	beer_t *beer;
 	
+	if (count < 0) {
+		return 2;
+	}
+
 	for (int i = 0; i < coll->n; i++) {
 		beer = coll->beers[i];
 		if (str_equals(beer->name, beer_name) == 0) {
