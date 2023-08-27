@@ -18,6 +18,7 @@ collection_t *init_collection(int capacity) {
 	coll->amount = malloc(sizeof(int) * capacity);
 	
 	if (coll->beers == NULL || coll->amount == NULL) {
+		free(coll);
 		return NULL;
 	}
 
@@ -27,7 +28,7 @@ collection_t *init_collection(int capacity) {
 int double_collection_capacity(collection_t *coll) {
 	coll->capacity *= 2;
 	
-	coll->beers = realloc(coll->beers, sizeof(beer_t) * coll->capacity);
+	coll->beers = realloc(coll->beers, sizeof(beer_t*) * coll->capacity);
 	coll->amount = realloc(coll->amount, sizeof(int) * coll->capacity);
 
 	if (coll->beers == NULL || coll->amount == NULL) {
@@ -66,7 +67,31 @@ int set_collection_beer_count(collection_t *coll, char *beer_name, int count) {
 }
 
 int read_collection_from_file(collection_t *coll, char *file_name) {
-	
+	int volume_ml, amount;
+	double price, alcohol_perc;
+	char name[100];
+	FILE *file;
+
+	file = fopen(file_name, "r");
+	if (file == NULL) {
+		return 1;
+	}
+
+	while (fscanf(file, "%s %lf %lf %d %d\n", name, &price, &alcohol_perc, &volume_ml, &amount) == 5) {
+		beer_t *new_beer = init_beer(name, price, alcohol_perc, volume_ml);
+		
+		if (new_beer != NULL) {
+			add_beer_to_collection(coll, new_beer);
+			set_collection_beer_count(coll, name, amount);
+		}
+		else {
+			return 2;
+		}
+	}
+
+	fclose(file);
+
+	return 0;
 }
 
 int write_collection_to_file(collection_t *coll, char *file_name) {
