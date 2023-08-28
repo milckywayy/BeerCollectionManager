@@ -15,7 +15,7 @@ int get_str_len(const char *str) {
 int str_equals(const char *a, const char *b) {
 	while (*a != '\0' && *b != '\0') {
 		if (*a != *b) {
-			return 1;
+			return 0;
 		}
 		
 		a++;
@@ -23,10 +23,10 @@ int str_equals(const char *a, const char *b) {
 	}
 
 	if (*a != *b) {
-		return 1;
+		return 0;
 	}
 
-	return 0;
+	return 1;
 }
 
 int cmp_str(const char *a, const char *b) {

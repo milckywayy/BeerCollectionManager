@@ -29,10 +29,18 @@ beer_t *init_beer(char *name, double price, double alcohol_perc, int volume_ml) 
 }
 
 void print_beer(beer_t *beer) {
+	if (beer == NULL) {
+		return;
+	}
+	
 	printf("%s: price: %f, alc: %f, ml: %d\n", beer->name, beer->price, beer->alcohol_perc, beer->volume_ml);
 }
 
 void free_beer(beer_t *beer) {
+	if (beer == NULL) {
+		return;
+	}
+	
 	free(beer->name);
 	free(beer);
 }
