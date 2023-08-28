@@ -1,5 +1,3 @@
-import ctypes
-from manager import manager
 from collection import *
 from beer import *
 
